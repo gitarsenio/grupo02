@@ -1,0 +1,159 @@
+   
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main.title-news {
+            background-color: #35a2b1;
+            margin-top: 50px;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container-n {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .news-n {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .article-n {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .article-n img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .news-n {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    
+
+
+
+
+        
+.home{
+    width: 100%;
+    min-height: 440px;
+    /* background: url("images/banner2.png"); */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-text{
+    color: var(--bg-color);
+    text-align: center;
+}
+
+.home-title{
+    font-size: 3.5rem;
+}
+
+.home-subtitle{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+@media (max-width: 1060px){
+   
+
+    .home-text{
+        width: 100%
+    }
+}
+
+
+
+@media (max-width: 396px){
+    .home-title{
+        font-size: 2rem;
+    }
+
+   
+    
+
+    
+   
+}
+
+
+/* para area do sobre valores */
+
+v {
+    color: #35a2b1;
+}
+
+
+.container-v {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-bottom: 100px; */
+  }
+  
+  .column-v {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Para garantir que as colunas fiquem juntas */
+  @media screen and (max-width: 600px) {
+    .column-v {
+      flex-basis: calc(50% - 40px);
+      /* 50% menos o dobro do padding para garantir que fiquem juntas */
+    }
+  }
+
+  /* Para garantir que as colunas fiquem juntas */
+@media screen and (max-width: 900px) {
+    .column-v {
+      flex-basis: calc(33.33% - 60px);
+      /* 33.33% menos o triplo do padding para garantir que fiquem juntas */
+    }
+  }
+  
+  /* Para garantir que as colunas fiquem juntas */
+  @media screen and (max-width: 600px) {
+    .column-v {
+      flex-basis: calc(50% - 40px);
+      /* 50% menos o dobro do padding para garantir que fiquem juntas */
+    }
+  }
+  
+  /* Para garantir que as colunas fiquem juntas */
+  @media screen and (max-width: 300px) {
+    .column-v {
+      flex-basis: 100%;
+      /* Uma coluna por linha em telas muito pequenas */
+    }
+  }
+  
+  
+  h1.valo {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  p.valo {
+    color: #666;
+    font-size: 16px;
+  }
+  

@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d6efd;
+}
+
+.login {
+    width: 360px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.login h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.login form {
+    font-size: 20px;
+}
+
+.login form .form-group {
+    margin-bottom: 12px;
+}
+
+.login form input[type="submit"] {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
+
+/* ===============================header menu=============================== */
+* {
+   margin: 0;
+    padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+   /* font-family: 'Merriweather', serif; */
+   text-transform: capitalize;
+   text-decoration: none;
+   list-style: none;
+   
+  }
+     
+	 html {
+		overflow-x: hidden;
+	 }
+
+	 body {
+		min-height: 100vh;
+		background-size: cover;
+		background-position: center;
+		background: #f2f2f2;
+	}
+ 
+
+
+header a {
+	text-decoration: none;
+  }
+  
+  header {
+	
+	padding: 0 20px;
+	background-color: #f2f2f2;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	
+  }
+  
+  header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
+	z-index: 1000;
+	color: #000;
+  }
+  
+  #brand {
+	font-weight: bold;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+  }
+  
+  #brand a {
+	color: #09c372;
+  }
+  
+   ul.nav-link {
+	list-style: none;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+  }
+  
+  ul a {
+	color: #000;
+  }
+  
+  ul li {
+	padding: 5px;
+	margin-left: 10px;
+  }
+  
+  ul li:hover {
+	transform: scale(1.1);
+	transition: 0.3s;
+  }
+  
+  #login,
+  #signup {
+	border-radius: 5px;
+	padding: 5px 8px;
+  }
+  
+  #login {
+	border: 1px solid #498afb;
+  }
+  
+  #signup {
+	border: 1px solid #ff3860;
+  }
+  
+  #signup a {
+	color: #ff3860;
+  }
+  
+  #login a {
+	color: #498afb;
+  }
+  
+  #hamburger-icon {
+	margin: auto 0;
+	display: none;
+	cursor: pointer;
+  }
+  
+  #hamburger-icon div {
+	width: 35px;
+	height: 3px;
+	background-color: #797979;
+	margin: 6px 0;
+	transition: 0.4s;		
+  }
+  
+  .open .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-6px, 6px);
+	transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  
+  .open .bar2 {
+	opacity: 0;
+  }
+  
+  .open .bar3 {
+	-webkit-transform: rotate(45deg) translate(-6px, -8px);
+	transform: rotate(45deg) translate(-6px, -8px);
+  }
+  
+  .open .mobile-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+  }
+  
+  .mobile-menu {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	height: calc(100vh - 50px);
+	width: 100%;
+  }
+  
+  .mobile-menu li {
+	margin-bottom: 10px;
+  }
+  
+
+  @media only screen and (max-width: 800px) {
+	header nav {
+	  display: none;
+	  color: #000;
+	}
+  
+	#hamburger-icon {
+	  display: block;    
+	}
+  
+	.mobile-menu {
+		/* bg color #9bdcdf */
+	  background-color: #fff;
+	  color: #000;
+	  height: 500px;
+	  width: 300px;
+	}
+  }
+  @media only screen and (max-width: 900px) {
+	header nav {
+	  display: none;
+	  color: #000;
+	}
+  
+	#hamburger-icon {
+	  display: block;    
+	}
+  
+	.mobile-menu {
+		/* bg color #9bdcdf */
+	  background-color: #fff;
+	  color: #000;
+	  height: 500px;
+	  width: 300px;
+	}
+  }
+  @media only screen and (max-width: 990px) {
+	header nav {
+	  display: none;
+	  color: #000;
+	}
+  
+	#hamburger-icon {
+	  display: block;    
+	}
+  
+	.mobile-menu {
+		/* bg color #9bdcdf */
+	  background-color: #fff;
+	  color: #000;
+	  height: 500px;
+	  width: 300px;
+	}
+  }
+  @media only screen and (max-width: 2000px) {
+	header nav {
+	  display: none;
+	  color: #000;
+	}
+  
+	#hamburger-icon {
+	  display: block;    
+	}
+  
+	.mobile-menu {
+		/* bg color #9bdcdf */
+	  background-color: #fff;
+	  color: #000;
+	  height: 500px;
+	  width: 300px;
+	}
+  }
+ 
+

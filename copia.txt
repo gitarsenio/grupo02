@@ -1,0 +1,125 @@
+<?php
+// Conectar ao banco de dados
+
+// Verificar conexão
+
+
+// Receber dados do formulário
+$paciente = @$_POST['paciente'];
+$medicamento1 = @$_POST['medicamento1'];
+$dosagem1 = @$_POST['dosagem1'];
+$medicamento2 = @$_POST['medicamento2'];
+$dosagem2 = @$_POST['dosagem2'];
+$medicos_id_medico = @$_POST['medicos_id_medico'];
+
+// Verificar se o médico existe e se o ID corresponde ao nome informado
+$sql_medico = "SELECT nome_medico FROM medicos WHERE id_medico = '$medicos_id_medico'";
+$result_medico = $conn->query($sql_medico);
+
+
+if ($result_medico->num_rows > 0) {
+    $row_medico = $result_medico->fetch_assoc();
+    $nome_medico = $row_medico['nome_medico'];
+
+    // Verificar se o nome do médico corresponde ao informado
+    if ($_POST['nome_medico'] !== $nome_medico) {
+        die("Erro: O ID do médico não corresponde ao nome informado.");
+    }
+} else {
+    die("Erro: Médico não encontrado.");
+}
+
+// Inserir dados no banco de dados
+$sql = "INSERT INTO receitas (paciente, medicamento1, dosagem1, medicamento2, dosagem2, medicos_id_medico) VALUES ('$paciente', '$medicamento1', '$dosagem1', '$medicamento2', '$dosagem2', '$medicos_id_medico')";
+if ($conn->query($sql) === TRUE) {
+    echo "Receita criada com sucesso!";
+} else {
+    echo "Erro ao criar receita: " . $conn->error;
+}
+
+
+// Fechar conexão com o banco de dados
+$conn->close();
+
+
+
+
+<?php
+include('config.php');
+//require_once('TCPDF-main/tcpdf.php');
+// Verificar se o ID da receita foi enviado
+if(isset($_GET['id_receita'])) {
+    // Conectar ao banco de dados
+    // Verificar conexão
+    if ($conn->connect_error) {
+        die("Erro ao conectar ao banco de dados: " . $conn->connect_error);
+    }
+
+    // Receber o ID da receita
+    $id_receita = $_GET['id_receita'];
+
+    // Consultar o banco de dados para obter os detalhes da receita
+    // $sql = "SELECT * FROM receitas WHERE id_receita = $id_receita";
+    $sql = "SELECT * FROM receitas AS rec 
+    INNER JOIN medicos AS med ON rec.medicos_id_medico = med.id_medico";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Se a receita for encontrada, criar um novo documento PDF
+        require_once('TCPDF-main/tcpdf.php');
+
+        // Criar um novo documento PDF
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // Configurar informações do documento
+        $pdf->SetCreator('Darkcode');
+        $pdf->SetAuthor('Elidio Arsenioi');
+        $pdf->SetTitle('Receita Médica');
+        $pdf->SetSubject('Receita Médica');
+        $pdf->SetKeywords('Receita, Médica, PDF');
+
+        // Adicionar uma nova página
+        $pdf->AddPage();
+
+        // Adicionar o cabeçalho com o nome da clínica
+        $pdf->SetFont('helvetica', 'B', 16);
+        $pdf->Cell(0, 10, 'Clinica de Viana', 0, 1, 'C');
+        $pdf->Ln(10); // Espaçamento entre o cabeçalho e o conteúdo
+
+        // Consultar os detalhes da receita
+        $row = $result->fetch_assoc();
+
+        // Adicionar o nome do paciente
+        $pdf->SetFont('helvetica', 'B', 14);
+        $pdf->Cell(0, 10, 'Paciente: ' . $row['paciente'], 0, 1, 'C');
+        $pdf->Ln(10); // Espaçamento entre o nome do paciente e os medicamentos
+
+        // Adicionar os medicamentos e suas dosagens
+        $pdf->SetFont('helvetica', '', 12);
+        $conteudo_receita = "Medicamentos:\n";
+        $conteudo_receita .= "Medicamento 1: " . $row['medicamento1'] . " - Dosagem: " . $row['dosagem1'] . "\n";
+        $conteudo_receita .= "Medicamento 2: " . $row['medicamento2'] . " - Dosagem: " . $row['dosagem2'] . "\n";
+        $pdf->MultiCell(0, 10, $conteudo_receita, 0, 'C');
+        $pdf->Ln(10); // Espaçamento entre os medicamentos e o nome do médico
+
+        // Adicionar o nome do médico
+
+        // Saída do PDF para o navegador
+        $pdf->Output('receita_medica.pdf', 'I');
+    } else {
+        echo "Receita não encontrada.";
+    }
+
+    // Fechar conexão com o banco de dados
+    $conn->close();
+} else {
+    echo "ID da receita não fornecido.";
+}
+?>
+
+
+
+
+
+
